@@ -4,7 +4,7 @@
   "description": "The Happy Technologies' Haxecheckstyle convention",
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "neko node_modules/haxecheckstyle/run.n -s test/TestConvention.hx -c checkstyle.json"
   },
   "repository": {
     "type": "git",

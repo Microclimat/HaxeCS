@@ -18,12 +18,13 @@
     },
     {
       "props": {
+        "severity": "IGNORE"
       },
       "type": "ArrayLiteral"
     },
     {
       "props": {
-        "severity": "WARNING"
+        "severity": "IGNORE"
       },
       "type": "AvoidInlineConditionals"
     },
@@ -67,11 +68,11 @@
       "props": {
         "thresholds": [
           {
-            "complexity": 20,
+            "complexity": 8,
             "severity": "WARNING"
           },
           {
-            "complexity": 25,
+            "complexity": 12,
             "severity": "ERROR"
           }
         ]
@@ -92,6 +93,7 @@
     },
     {
       "props": {
+        "severity": "ERROR",
         "tokens": [
           "CLASS_DEF",
           "ENUM_DEF",
@@ -245,8 +247,9 @@
     },
     {
       "props": {
+        "severity": "ERROR",
         "ignoreExtern": true,
-        "format": "^[a-z][a-zA-Z0-9]*$",
+        "format": "^([a-z][a-zA-Z0-9]*)$|^([a-z][a-z_A-Z0-9]*Handler)$",
         "tokens": []
       },
       "type": "MethodName"
@@ -297,7 +300,8 @@
     },
     {
       "props": {
-        "max": 1
+        "severity": "ERROR",
+        "max": 4
       },
       "type": "NestedIfDepth"
     },
@@ -431,7 +435,7 @@
           "TRY",
           "CATCH"
         ],
-        "option": "same"
+        "option": "aloneorsingle"
       },
       "type": "RightCurly"
     },

@@ -2,15 +2,15 @@ using com.sakura.common.model.HeidiArea;
 
 class TestConvention {
     private var _toto:String; //ok
-    private var toto:String;
+    private var toto:String; //nok
 
-    public var _tata:String;
+    public var _tata:String; //nok
     public var tata:String; //ok
 
-    public var TATA:String;
-    var TOTO:Int;
+    public var TATA:String; //nok
+    var TOTO:Int; // visibility not specified + uppercase
 
-    private var _TATA:String;
+    private var _TATA:String; // uppercase
 
     private static var TATA_TOTO:String;
     private static inline var TATA_TOTO22:String = "";// ";" should have a whitespace after them
@@ -42,6 +42,9 @@ class TestConvention {
 
 
     public function localVarTest ():Void {
+        var array:Array<Int> = new Array<Int>(); // must not throw warning
+        array.push(1);
+
         var testArray:Array = [];
         testArray.push(1);
         // Incorrect

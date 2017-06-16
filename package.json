@@ -1,7 +1,7 @@
 {
   "name": "happyhxcs",
   "version": "0.0.1",
-  "description": "The Happy Technologies' Haxecheckstyle convention",
+  "description": "The Happy Technologies' Haxe Checkstyle convention",
   "main": "",
   "scripts": {
     "test": "neko node_modules/haxecheckstyle/run.n -s test/TestConvention.hx -c checkstyle.json"

@@ -13,29 +13,45 @@ class TestConvention {
     private var _TATA:String; // uppercase
 
     private static var TATA_TOTO:String;
-    private static inline var TATA_TOTO22:String = "";// ";" should have a whitespace after them
-    private static inline var _TATA_TOTO22:String = "";
+    private static inline var TATA_TOTO22:String = '';// ";" should have a whitespace after them
+    private static inline var _TATA_TOTO22:String = '';
 
-    public static inline var _TATA_TOTO223:String = "";
-    public static inline var TATA_TOTO223:String = ""; //ok
+    public static inline var _TATA_TOTO223:String = '';
+    public static inline var TATA_TOTO223:String = ''; //ok
 
-    public function new () {}
+    // Empty block error
+    public function new () {
+
+    }
 
     // Emits a warning : complexity is 8 cause there is 8 tests (true && true) as a score of 2
-    public function conditionOperatorsTest ():Void {
+    public function conditionOperatorsTest ():String {
+        var i = '';
+
         // correct
-        if (true && true) {}
+        if (true && true) {
+            i += 'i';
+        }
 
         // Correct
         if (true
-        && true) {}
+        && true) {
+            i += 'i';
+        }
 
         // Incorrect
         if (true &&
-        true) {}
+        true) {
+            // Info about whitespace
+            i+= 'i';
+        }
+
+        var incorrectDoubleQuotes = "debug";
 
         // correct (Rudy & Thomas V)
-        true ? trace("Hello") : false;
+        true ? trace('Hello') : false;
+
+        return i;
     }
     // The following spaces are here to test the max empty lines nb
 
@@ -51,6 +67,13 @@ class TestConvention {
         testArray[ 0 ];
         // Correct
         testArray[0];
+    }
+
+    public function ifelsecondition ():Void {
+        if (true) {
+            // unused var
+            var unused = 1;
+        }
     }
 
     // OK
@@ -74,7 +97,9 @@ class TestConvention {
                 if (true) {
                     if (true) {
                         if (true) {
-                            if (true) {}
+                            if (true) {
+                                return;
+                            }
                         }
                     }
                 }

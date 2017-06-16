@@ -421,6 +421,15 @@
     {
       "props": {
         "tokens": [
+          "IF"
+        ],
+        "option": "same"
+      },
+      "type": "RightCurly"
+    },
+    {
+      "props": {
+        "tokens": [
           "CLASS_DEF",
           "ENUM_DEF",
           "ABSTRACT_DEF",
@@ -429,7 +438,6 @@
           "OBJECT_DECL",
           "FUNCTION",
           "FOR",
-          "IF",
           "WHILE",
           "SWITCH",
           "TRY",
@@ -481,7 +489,8 @@
     },
     {
       "props": {
-        "policy": "doubleAndInterpolation",
+        "severity": "WARNING",
+        "policy": "onlySingle",
         "allowException": true
       },
       "type": "StringLiteral"

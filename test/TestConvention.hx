@@ -17,40 +17,67 @@ class TestConvention {
     private static inline var _TATA_TOTO22:String = "";
 
     public static inline var _TATA_TOTO223:String = "";
-    public static inline var TATA_TOTO223:String = "";
-    //ok
+    public static inline var TATA_TOTO223:String = ""; //ok
 
-    public function new () {
+    public function new () {}
 
-    }
-
-    public function conditionOperatorsTest () {
+    // Emits a warning : complexity is 8 cause there is 8 tests (true && true) as a score of 2
+    public function conditionOperatorsTest ():Void {
         // correct
-        if (true && true) {
-        }
+        if (true && true) {}
 
         // Correct
         if (true
-        && true) {
-        }
+        && true) {}
 
         // Incorrect
         if (true &&
-        true) {
-        }
+        true) {}
 
-        // Incorrect
-        true ? trace("Hello") : trace("Bad");
+        // correct (Rudy & Thomas V)
+        true ? trace("Hello") : false;
     }
+    // The following spaces are here to test the max empty lines nb
 
 
 
-    public function localVarTest () {
+    public function localVarTest ():Void {
         var testArray:Array = [];
         testArray.push(1);
         // Incorrect
         testArray[ 0 ];
         // Correct
         testArray[0];
+    }
+
+    // OK
+    public function testNormalMethod():Void {}
+
+    // Not a handler, error
+    public function testNormal_Method():Void {}
+
+    // correct
+    public function testNormalHandler():Void {}
+
+    // correct, method ends with "Handler", underscore is authorized
+    public function test_UnderscoreHandler():Void {}
+
+    public function testReturnTypeNotSpecified() {}
+
+    // Bad : more than 5 if nested
+    public function badNestedIfTest():Void {
+        if (true) {
+            if (true) {
+                if (true) {
+                    if (true) {
+                        if (true) {
+                            if (true) {
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }

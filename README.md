@@ -25,7 +25,7 @@ Or juste execute `npm run test`
     - common methods must only have numbers and letters
     - handlers (methods finishing by "Handler") can contain underscores in their name
 - empty methods, classes, etc... must have brackets under format "{}"
-- opening brackets must be on same line that the declaration. Exemples:
+- opening brackets must be on same line that the declaration. Examples:
     - if (condition) {
     - class MyClass {
 - method "trace" will throw an error

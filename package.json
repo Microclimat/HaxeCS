@@ -1,0 +1,25 @@
+{
+  "name": "happyhxcs",
+  "version": "0.0.1",
+  "description": "The Happy Technologies' Haxecheckstyle convention",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Microclimat/HaxeCS.git"
+  },
+  "keywords": [
+    "haxe"
+  ],
+  "author": "Happy Technologies",
+  "bugs": {
+    "url": "https://github.com/Microclimat/HaxeCS/issues"
+  },
+  "homepage": "https://github.com/Microclimat/HaxeCS#readme",
+  "dependencies": {
+    "haxecheckstyle": "2.1.12"
+  },
+  "readmeFilename": "README.md"
+}

@@ -300,3 +300,317 @@ import my.controls.Button as MyButton;
 ...
 var b:MyButton = new MyButton();
 ```
+
+## 2.5 Expressions
+
+### 2.5.1 Parentheses
+
+Don't use unnecessary parentheses with common operators such as +, -, *, /, &&, ||, <, <=, >, >=, ==, and !=.
+
+Do this:
+```var e = a * b / (c + d);```
+
+Not this:
+```var e = (a * b) / (c + d);```
+
+And this:
+```var e = a && b || c == d;```
+
+Not this:
+```var e = ((a && b) || (c == d));```
+
+The precedence rules for other operators are harder to remember, so parentheses can be helpful with them.
+
+### 2.5.2 Coercion
+
+Don't compare a Boolean value to true or false; it already is one or the other.
+
+Do this:
+```if (flag)```
+
+Not this:
+```if (flag == true)```
+
+Do this:
+```var flag = a && b;```
+
+Not this:
+```var flag = (a && b) != false;```
+
+### 2.5.3 Comparison
+
+Write comparisons in the order that they read most naturally:
+
+Do this:
+```if (n == 3) // "if n is 3"```
+
+Not this:
+```if (3 == n) // "if 3 is n"```
+
+### 2.5.5 Ternary operator
+
+Use a ternary operator in place of a simple if/else statement, especially for null checks.
+
+### 2.6.2 import statements
+
+Import specific classes, interfaces, and package-level functions rather than using the * wildcard.
+
+### 2.6.3 return statements
+
+Use only one return in a function.
+
+Do this:
+```
+var result=false;
+if (!condition1)
+    value = false;
+...
+if (!condition2)
+    value =false;
+...
+if (!condition2)
+    value = false;
+...
+return result;
+```
+
+Not this:
+```
+if (!condition1)
+    return false;
+...
+if (!condition2)
+    return false;
+...
+if (!condition2)
+    return false;
+...
+return true;
+```
+
+Do not enclose a return value in unnecessary parentheses.
+
+Do this:
+```return n + 1;```
+
+Not this:
+```return (n + 1);```
+
+Returning from the middle of a method is OK.
+
+### 2.6.4 if statements
+
+Avoid using inline if statements.
+
+Not this:
+```
+if (flag)
+    doThing1();
+```
+    
+Do this:
+```
+if (flag)
+{
+    doThing1();
+}
+```
+
+Not this:
+```
+if (flag)
+    doThing1();
+else
+    doThing2():
+```
+
+ Do this:
+```
+if (flag)
+{
+    doThing1();
+}
+else
+{
+    doThing2();
+}
+```
+
+### 2.6.5 for statements
+
+Make the body of a for loop be a block, even if it consists of only one statement.
+
+Do this:
+```
+for (i in 0...3)
+{
+   doSomething(i);
+}
+```
+
+Not this:
+```
+for (i in 0...3)
+    doSomething(i);
+```
+
+
+## 2.7 Declarations
+
+Don't declare multiple constants or variables in a single declaration.
+
+Do this:
+```
+var a:int = 1;
+var b:int = 2;
+```
+
+Not this:
+```var a:int = 1, b:int = 2;```
+
+### 2.7.1 The override keyword
+
+If present, put this first, before the access specifier.
+
+Do this:
+```override private function measure():Void```
+
+Not this:
+```private override function measure():Void```
+
+### 2.7.2 Access specifiers
+
+Put an explicit access specifier everywhere that one is allowed. Do not use the fact that private is the implicit access specifier if none is written.
+Before making an API public or private, think hard about whether it is really needs to be.
+
+### 2.7.3 The static keyword
+
+If present, put this after the access specifier.
+
+Do this:
+```public static inline var MOVE:String = 'move';```
+
+Not this:
+```static public inline var MOVE:String = 'move';```
+
+### 2.7.5 Constants
+All constants should be static. There is no reason to use an instance constant, since all instances would store the same value.
+Put this before the var/function specifier.
+
+Do this:
+```public static inline var ALL:String = 'all';```
+
+Not this:
+```inline public static var ALL:String = 'all';```
+
+### 2.7.6 Variables
+
+If a variable needs to be initialized to a non-default value, do this in the declaration, not in the constructor.
+
+Do this:
+```private var _counter:Int = 1;```
+
+Not this:
+```private var _counter:Int;
+...
+public function new()
+{
+    super();
+    ...
+    _counter = 1;
+}
+```
+
+### 2.7.7 Local variables
+
+Declare local variables at or just before the point of first use. Don't declare them all at the top of the function.
+
+Do this:
+```
+private function f(i:Int, j:Int):Int
+{
+    var a = g(i - 1) + g(i + 1);
+    var b = g(a - 1) + g(a + 1);
+    var c  = g(b - 1) + g(b + 1);
+
+    return (a * b * c) / (a + b + c);
+}
+```
+
+Not this:
+```private function f(i:Int, j:Int):Int
+{
+    var a:Int;
+    var b:Int;
+    var c:Int;
+
+    a = g(i - 1) + g(i + 1);
+    b = g(a - 1) + g(a + 1);
+    c = g(b - 1) + g(b + 1);
+    return (a * b * c) / (a + b + c);
+}
+```
+
+Declare local variables only one per function. ActionScript 3 doesn't have block-scoped locals.
+
+Do this:
+```var a:Int;
+if (flag)
+{
+    a = 1;
+    ...
+}
+else
+{
+    a = 2;
+    ...
+}
+```
+
+Not this:
+```if (flag)
+{
+    var a:Int = 1;
+    ...
+}
+else
+{
+    var a:Int = 2;
+    ...
+}
+```
+
+### 2.7.9 Constructors
+
+If the constructor takes arguments that set instance vars, give the the same names as the instance vars.
+
+Do this:
+```
+public function new(foo:Int, bar:Int)
+{
+    this.foo = foo;
+    this.bar = bar;
+}
+```
+
+Not this:
+```
+public function new(fooVal:Int, barVal:Int)
+{
+    foo = fooVal;
+    bar = barVal;
+}
+```
+
+Don't set the classes' instance vars in the constructor; do this in the declarations of the instance vars. However, if you need to reset the values of inherited instance vars, do this in the consturctor.
+
+# 3 File Organization
+
+This section presents the order in which an Haxe file should be organized.
+
+
+# 4 Formatting
+
+This section covers how an Haxe class should be formatted.
+
+## 4.1 Line width

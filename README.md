@@ -72,10 +72,14 @@ For example, name a border Shape border, borderSkin, or borderShape.
 In the most of case, do not use the same name for an object as its type:
 
 Do this:
-```var validationButton:Button = new Button();```
+```haxe
+var validationButton:Button = new Button();
+```
 
 Not this:
-```var button:Button = new Button();```
+```haxe
+var button:Button = new Button();
+```
 
 ## 1.5 Package names
 
@@ -128,13 +132,15 @@ Use all uppercase letters with underscores between words: OFF, DEFAULT_WIDTH.
 
 The words in the identifier must match the words in the constant value if it is a String:
 
-```public static inline var FOO_BAR:String = 'fooBar';```
+```haxe
+public static inline var FOO_BAR:String = 'fooBar';
+```
 
 ## 1.14 Property (variable and getter/setter) names
 
 Start them with a lowercase letter and use intercaps for subsequent words: i, width, numChildren.
 Use i for a loop index. Use j for an inner loop index.
-```
+```haxe
 for (i in 0...10)
 {
     for (j in 0...10)
@@ -145,7 +151,7 @@ for (i in 0...10)
 ```
 
 Use the singular name of the list name for a for-in loop variable:
-```
+```haxe
 for (item in _items)
 {
     ...
@@ -172,20 +178,30 @@ If the handler is for events dispatched by a subcomponent (i.e., not this), pref
 Use value for the argument of every setter:
 
 Do this:
-```private function set_label(value:String):String```
+```haxe
+private function set_label(value:String):String
+```
 
 Not this:
-```private function set_label(lab:String):String```
+```haxe
+private function set_label(lab:String):String
+```
 
 Or this:
-```private function set_label(labelValue:String):String```
+```haxe
+private function set_label(labelValue:String):String
+```
 
 Or this:
-```private function set_label(val:String):String```
+```haxe
+private function set_label(val:String):String
+```
 
 Use event (not e, evt, or eventObj) for the argument of every event handler:
 
-```private function mouseDownHandler(event:Event):Void```
+```haxe
+private function mouseDownHandler(event:Event):Void
+```
 
 # 2 Language Usage
 
@@ -205,18 +221,26 @@ Use Dynamic only if the type is undefined.
 Use a lowercase x and uppercase A-Z in hexadecimal numbers.
 
 Do this:
-```0xFEDCBA```
+```haxe
+0xFEDCBA
+```
 
 Not this:
-```0xfedcba```  
+```haxe
+0xfedcba
+```  
 
 Always write an RGB color as a six-digit hexadecimal number.
 
 Do this:
-```private static inline var BLACK:Int = 0x000000;```
+```haxe
+private static inline var BLACK:Int = 0x000000;
+```
 
 Not this:
-```private static inline var BLACK:Int = 0;```
+```haxe
+private static inline var BLACK:Int = 0;
+```
 
 When dealing with indices, use the value -1 to mean “no index”.
 
@@ -225,13 +249,13 @@ When dealing with indices, use the value -1 to mean “no index”.
 If a number value typically can be fractional, indicate this by using a decimal point, and follow the decimal point by a single trailing zero.
 
 Do this:
-```
+```haxe
 alphaFrom = 0.0;
 alphaTo = 1.0;
 ```
 
 Not this:
-```
+```haxe
 alphaFrom = 0;
 alphaTo = 1;
 ```
@@ -241,10 +265,14 @@ alphaTo = 1;
 Use apostrophes (single quotes), not quotation marks (double quotes), to delimit strings.
 
 Do this:
-```'What\'s up, "Big Boy"?'```
+```haxe
+'What\'s up, "Big Boy"?'
+```
 
 Not this:
-```"What's up, \"Big Boy\"?"```
+```haxe
+"What's up, \"Big Boy\"?"
+```
 
 Use \u, not \U, for unicode escape sequences.
 
@@ -253,10 +281,14 @@ Use \u, not \U, for unicode escape sequences.
 Use new Array()<T> rather than Array literals.
 
 Do this:
-```new Array()<String>()```
+```haxe
+new Array()<String>()
+```
 
 Not this:
-```[]```
+```haxe
+[]
+```
 
 ### 2.4.7 Function literals
 
@@ -269,24 +301,28 @@ If you must use a function literal, declare a return type.
 Use the literal notation rather than constructing a EReg instance from a String.
 
 Do this:
-```var pattern = ~/haxe/i;```
+```haxe
+var pattern = ~/haxe/i;
+```
 
 Not this:
-```var pattern = new EReg("haxe", "i");```
+```haxe
+var pattern = new EReg("haxe", "i");
+```
 
 ### 2.4.10 Class literals
 
 Use a fully-qualified class literal only if necessary to disambiguate between two imported classes with the same unqualified name.
 
 Do this:
-```
+```haxe
 import mx.controls.Button;
 ...
 var b:Button = new Button();
 ```
 
 Not this:
-```
+```haxe
 import mx.controls.Button;
 ...
 var b:Button = new mx.controls.Button();
@@ -294,7 +330,7 @@ var b:Button = new mx.controls.Button();
 
 If a type or static field is used a lot in an importing module it might help to alias it to a shorter name. This can also be used to disambiguate conflicting names by giving them a unique identifier.
 
-```
+```haxe
 import mx.controls.Button;
 import my.controls.Button as MyButton;
 ...
@@ -308,16 +344,24 @@ var b:MyButton = new MyButton();
 Don't use unnecessary parentheses with common operators such as +, -, *, /, &&, ||, <, <=, >, >=, ==, and !=.
 
 Do this:
-```var e = a * b / (c + d);```
+```haxe
+var e = a * b / (c + d);
+```
 
 Not this:
-```var e = (a * b) / (c + d);```
+```haxe
+var e = (a * b) / (c + d);
+```
 
 And this:
-```var e = a && b || c == d;```
+```haxe
+var e = a && b || c == d;
+```
 
 Not this:
-```var e = ((a && b) || (c == d));```
+```haxe
+var e = ((a && b) || (c == d));
+```
 
 The precedence rules for other operators are harder to remember, so parentheses can be helpful with them.
 
@@ -326,26 +370,38 @@ The precedence rules for other operators are harder to remember, so parentheses 
 Don't compare a Boolean value to true or false; it already is one or the other.
 
 Do this:
-```if (flag)```
+```haxe
+if (flag)
+```
 
 Not this:
-```if (flag == true)```
+```haxe
+if (flag == true)
+```
 
 Do this:
-```var flag = a && b;```
+```haxe
+var flag = a && b;
+```
 
 Not this:
-```var flag = (a && b) != false;```
+```haxe
+var flag = (a && b) != false;
+```
 
 ### 2.5.3 Comparison
 
 Write comparisons in the order that they read most naturally:
 
 Do this:
-```if (n == 3) // "if n is 3"```
+```haxe
+if (n == 3) // "if n is 3"
+```
 
 Not this:
-```if (3 == n) // "if 3 is n"```
+```haxe
+if (3 == n) // "if 3 is n"
+```
 
 ### 2.5.5 Ternary operator
 
@@ -360,7 +416,7 @@ Import specific classes, interfaces, and package-level functions rather than usi
 Use only one return in a function.
 
 Do this:
-```
+```haxe
 var result=false;
 if (!condition1)
     value = false;
@@ -375,7 +431,7 @@ return result;
 ```
 
 Not this:
-```
+```haxe
 if (!condition1)
     return false;
 ...
@@ -391,10 +447,14 @@ return true;
 Do not enclose a return value in unnecessary parentheses.
 
 Do this:
-```return n + 1;```
+```haxe
+return n + 1;
+```
 
 Not this:
-```return (n + 1);```
+```haxe
+return (n + 1);
+```
 
 Returning from the middle of a method is OK.
 
@@ -403,13 +463,13 @@ Returning from the middle of a method is OK.
 Avoid using inline if statements.
 
 Not this:
-```
+```haxe
 if (flag)
     doThing1();
 ```
     
 Do this:
-```
+```haxe
 if (flag)
 {
     doThing1();
@@ -417,7 +477,7 @@ if (flag)
 ```
 
 Not this:
-```
+```haxe
 if (flag)
     doThing1();
 else
@@ -425,7 +485,7 @@ else
 ```
 
  Do this:
-```
+```haxe
 if (flag)
 {
     doThing1();
@@ -441,7 +501,7 @@ else
 Make the body of a for loop be a block, even if it consists of only one statement.
 
 Do this:
-```
+```haxe
 for (i in 0...3)
 {
    doSomething(i);
@@ -449,7 +509,7 @@ for (i in 0...3)
 ```
 
 Not this:
-```
+```haxe
 for (i in 0...3)
     doSomething(i);
 ```
@@ -460,23 +520,29 @@ for (i in 0...3)
 Don't declare multiple constants or variables in a single declaration.
 
 Do this:
-```
+```haxe
 var a:int = 1;
 var b:int = 2;
 ```
 
 Not this:
-```var a:int = 1, b:int = 2;```
+```haxe
+var a:int = 1, b:int = 2;
+```
 
 ### 2.7.1 The override keyword
 
 If present, put this first, before the access specifier.
 
 Do this:
-```override private function measure():Void```
+```haxe
+override private function measure():Void
+```
 
 Not this:
-```private override function measure():Void```
+```haxe
+private override function measure():Void
+```
 
 ### 2.7.2 Access specifiers
 
@@ -488,30 +554,41 @@ Before making an API public or private, think hard about whether it is really ne
 If present, put this after the access specifier.
 
 Do this:
-```public static inline var MOVE:String = 'move';```
+```haxe
+public static inline var MOVE:String = 'move';
+```
 
 Not this:
-```static public inline var MOVE:String = 'move';```
+```haxe
+static public inline var MOVE:String = 'move';
+```
 
 ### 2.7.5 Constants
 All constants should be static. There is no reason to use an instance constant, since all instances would store the same value.
 Put this before the var/function specifier.
 
 Do this:
-```public static inline var ALL:String = 'all';```
+```haxe
+public static inline var ALL:String = 'all';
+```
 
 Not this:
-```inline public static var ALL:String = 'all';```
+```haxe
+inline public static var ALL:String = 'all';
+```
 
 ### 2.7.6 Variables
 
 If a variable needs to be initialized to a non-default value, do this in the declaration, not in the constructor.
 
 Do this:
-```private var _counter:Int = 1;```
+```haxe
+private var _counter:Int = 1;
+```
 
 Not this:
-```private var _counter:Int;
+```haxe
+private var _counter:Int;
 ...
 public function new()
 {
@@ -526,7 +603,7 @@ public function new()
 Declare local variables at or just before the point of first use. Don't declare them all at the top of the function.
 
 Do this:
-```
+```haxe
 private function f(i:Int, j:Int):Int
 {
     var a = g(i - 1) + g(i + 1);
@@ -538,7 +615,8 @@ private function f(i:Int, j:Int):Int
 ```
 
 Not this:
-```private function f(i:Int, j:Int):Int
+```haxe
+private function f(i:Int, j:Int):Int
 {
     var a:Int;
     var b:Int;
@@ -554,7 +632,8 @@ Not this:
 Declare local variables only one per function. ActionScript 3 doesn't have block-scoped locals.
 
 Do this:
-```var a:Int;
+```haxe
+var a:Int;
 if (flag)
 {
     a = 1;
@@ -568,7 +647,8 @@ else
 ```
 
 Not this:
-```if (flag)
+```haxe
+if (flag)
 {
     var a:Int = 1;
     ...
@@ -585,7 +665,7 @@ else
 If the constructor takes arguments that set instance vars, give the the same names as the instance vars.
 
 Do this:
-```
+```haxe
 public function new(foo:Int, bar:Int)
 {
     this.foo = foo;
@@ -594,7 +674,7 @@ public function new(foo:Int, bar:Int)
 ```
 
 Not this:
-```
+```haxe
 public function new(fooVal:Int, barVal:Int)
 {
     foo = fooVal;
@@ -614,3 +694,205 @@ This section presents the order in which an Haxe file should be organized.
 This section covers how an Haxe class should be formatted.
 
 ## 4.1 Line width
+
+Wrap code to 80-character lines. This has the following advantages:
+- Developers with smaller screens don't have to scroll horizontally to read long lines.
+- A comparison utility can display two versions of a file side-by-side.
+- The font size can be increased for projection before a group without requiring scrolling.
+- The source code can be printed without clipping or wrapping.
+
+## 4.2 Indentation
+
+Use 4-tab indentation. Configure your text editor to insert tabs rather than spaces.
+
+## 4.4 Separation of declarations
+
+Use a single blank line as a vertical separator between function declarations.
+Group variables and constants by visibility
+
+```haxe
+public static inline var MIN_WIDTH_PERCENT:Float = 0.15;
+public static inline var MIN_HEIGHT_PERCENT:Float = 0.15;
+
+public var area(get, set):Area;
+public var showBorder(get, set):Bool;
+public var highlight(get, set):Bool ;
+public var mute(get, set):Bool;
+
+private var _area:Area;
+private var _backgroundShape:Shape;
+private var _areaMask:Shape;
+private var _border:Shape;
+```
+## 4.6 Array indexing
+
+Don't put any spaces before or after the left bracket or before the right bracket.
+
+Do this:
+```haxe
+a[0]
+```
+
+Not this:
+```haxe
+a[ 0 ]
+```
+
+## 4.7 Commas
+
+Follow a comma with a single space. This applies to argument lists, array literals, and object literals.
+
+## 4.8 Array literals
+
+Put a single space after (but none before) each comma.
+
+Do this:
+```haxe
+[1, 2, 3]
+```
+
+Not these:
+```haxe
+[ 1, 2, 3 ]
+[1,2,3]
+```
+
+An empty array is a special case.
+
+Do this:
+```haxe
+[]
+```
+Not this:
+```haxe
+[ ]
+```
+
+Format lengthy array initializers requiring multiple lines with aligned brackets:
+```haxe
+public static var numberNames:Array<String> =
+[
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine"
+];
+```
+
+## 4.9 Anonymous Structure literals
+Put a single space after the colon separating the property name and value.
+
+Do this:
+```haxe
+{a:1, b:2, c:3}
+```
+
+Not these:
+```haxe
+{a: 1, b: 2, c: 3}
+{ a:1, b:2, c:3 }
+{a:1,b:2,c:3}
+```
+An empty Object is a special case.
+
+Do this:
+```haxe
+{}
+```
+
+Not this:
+```haxe
+{ }
+```
+
+Format lengthy object initializers requiring multiple lines with aligned braces:
+```haxe
+var textStyleMap =
+{
+    color: true,
+    fontFamily: true,
+    fontSize: true,
+    fontStyle: true,
+    fontWeight: true,
+    leading: true,
+    marginLeft: true,
+    marginRight: true,
+    textAlign: true,
+    textDecoration: true,
+    textIndent: true
+};
+```
+
+## 4.11 Type declarations
+
+Don't put any spaces before or after the colon that separates a variable, parameter, or function from its type.
+
+Do this:
+```haxe
+var n:Float;
+```
+
+Not these:
+```haxe
+var n : Float;
+var n: Float;
+```
+
+And this:
+```haxe
+function f(n:Float):Void
+```
+
+Not these:
+```haxe
+function f(n : Float) : Void
+function f(n: Float): Void
+```
+
+## 4.12 Operators and assignments
+
+Put a single space around the assignment operator.
+
+Do this:
+a = 1;
+
+Not this:
+a=1;
+
+Put a single space around infix operators.
+
+Do this:
+a + b * c
+
+Not this:
+a+b*c
+
+Put a single space around comparison operators.
+
+Do this:
+a == b
+
+Not this:
+a==b
+
+Don't put any spaces between a prefix operator and its operand.
+
+Do this:
+!o
+
+Not this:
+! o
+
+Don't put any spaces between a postfix operator and its operand.
+
+Do this:
+i++
+
+Not this:
+i ++

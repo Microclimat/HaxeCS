@@ -187,3 +187,116 @@ Use event (not e, evt, or eventObj) for the argument of every event handler:
 
 ```private function mouseDownHandler(event:Event):Void```
 
+# 2 Language Usage
+
+This section discusses how we use the language constructs of Haxe, especially when there are multiple ways to express the same thing.
+
+## 2.1 Type declarations
+
+Use the narrowest type that is appropriate. 
+For example, a mouseDownHandler should declare its argument as event:MouseEvent, not event:Event.
+
+Use Dynamic only if the type is undefined.
+
+## 2.4 Literals
+
+### 2.4.2 Int literals
+
+Use a lowercase x and uppercase A-Z in hexadecimal numbers.
+
+Do this:
+```0xFEDCBA```
+
+Not this:
+```0xfedcba```  
+
+Always write an RGB color as a six-digit hexadecimal number.
+
+Do this:
+```private static inline var BLACK:Int = 0x000000;```
+
+Not this:
+```private static inline var BLACK:Int = 0;```
+
+When dealing with indices, use the value -1 to mean “no index”.
+
+### 2.4.3 Float literals
+
+If a number value typically can be fractional, indicate this by using a decimal point, and follow the decimal point by a single trailing zero.
+
+Do this:
+```
+alphaFrom = 0.0;
+alphaTo = 1.0;
+```
+
+Not this:
+```
+alphaFrom = 0;
+alphaTo = 1;
+```
+
+### 2.4.4 String literals
+
+Use apostrophes (single quotes), not quotation marks (double quotes), to delimit strings.
+
+Do this:
+```'What\'s up, "Big Boy"?'```
+
+Not this:
+```"What's up, \"Big Boy\"?"```
+
+Use \u, not \U, for unicode escape sequences.
+
+### 2.4.5 Array literals
+
+Use new Array()<T> rather than Array literals.
+
+Do this:
+```new Array()<String>()```
+
+Not this:
+```[]```
+
+### 2.4.7 Function literals
+
+Avoid using function literals to define anonymous functions; use a class method or package function instead.
+
+If you must use a function literal, declare a return type.
+
+### 2.4.8 RegExp literals
+
+Use the literal notation rather than constructing a EReg instance from a String.
+
+Do this:
+```var pattern = ~/haxe/i;```
+
+Not this:
+```var pattern = new EReg("haxe", "i");```
+
+### 2.4.10 Class literals
+
+Use a fully-qualified class literal only if necessary to disambiguate between two imported classes with the same unqualified name.
+
+Do this:
+```
+import mx.controls.Button;
+...
+var b:Button = new Button();
+```
+
+Not this:
+```
+import mx.controls.Button;
+...
+var b:Button = new mx.controls.Button();
+```
+
+If a type or static field is used a lot in an importing module it might help to alias it to a shorter name. This can also be used to disambiguate conflicting names by giving them a unique identifier.
+
+```
+import mx.controls.Button;
+import my.controls.Button as MyButton;
+...
+var b:MyButton = new MyButton();
+```

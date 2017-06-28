@@ -18,6 +18,83 @@ Then, you can run manually the command
 
 Or juste execute `npm run test`
 
+## Installation
+
+This convention is available on NPM and can be added to your project as a dependency.
+
+`npm install happyhxcs`
+
+You should also install haxecheckstyle to use it.
+
+`npm install haxecheckstyle`
+
+### Intellij External Tools
+
+You can create an External Tool to use this coding convention in your IDE. Configure it using this settings :
+
+- Program : neko
+- Parameters : node_modules/haxecheckstyle/run.n -c node_modules/happyhxcs/checkstyle.json -s $FilePath$
+- Working directory : $ProjectFileDir$
+
+You'll be able to right click on an hx file to run your external tool on it.
+
+
+### Install a pre-commit hook
+
+Add husky to your dependencies and your checkstyle script as a precommit command.
+
+```json
+  "scripts": {
+    "precommit": "node ./scripts/pre-commit-checkstyle"
+  },
+  "devDependencies": {
+    "husky": "0.14.1",
+    "happyhxcs": ">=0.0.1",
+    "haxecheckstyle": "2.1.12-dev.0"
+  }
+```
+This is a precommit script exemple :
+
+```javascript
+console.log("pre commit haxe checkstyle");
+
+var proc = require("child_process");
+
+
+var command = "neko node_modules/haxecheckstyle/run.n -c node_modules/happyhxcs/checkstyle.json";
+var options = {
+    cwd: '.',
+    encoding: 'utf8'
+};
+
+var files = proc.execSync('git diff -r -p -m -M --full-index --staged --name-only',options).split("\n");
+var path = [];
+
+for(var i = 0; i < files.length; i++){
+    var file = files[i];
+    if(file.indexOf('.hx') > 0 ){
+        path.push('-s '+file);
+    }
+}
+
+var checkstyleHandler = function(error, stdout, stderr){
+    console.log(stdout);
+    var r = new RegExp('Errors: ([0-9]*).*Warnings: ([0-9]*).*Infos: ([0-9]*)', "gim");
+    var t = r.exec(stdout);
+    var errors = parseInt(t[1]);
+    var warnings = parseInt(t[2]);
+    var infos = parseInt(t[3]);
+    console.log("Errors : " + errors + " Warnings : " +warnings + " Infos : " + infos);
+    if(errors > 0 || warnings > 0){
+        console.warn("To many errors, fix before push");
+        process.exit(1);
+    }
+}
+if(path.length > 0) {
+    proc.exec(command + ' ' + path.join(' '), options, checkstyleHandler);
+}
+```
+
 
 # 1 Naming
 

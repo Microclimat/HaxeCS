@@ -74,7 +74,7 @@ var path = [];
 for (var i = 0; i < files.length; i++)
 {
     var file = files[i];
-    if(file.indexOf('.hx') > 0)
+    if (file.indexOf('.hx') > 0)
     {
         path.push('-s ' + file);
     }

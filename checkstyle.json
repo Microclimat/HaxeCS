@@ -98,7 +98,9 @@
       "type": "DefaultComesLast"
     },
     {
-      "props": {},
+      "props": {
+        "severity": "ERROR"
+      },
       "type": "Dynamic"
     },
     {
@@ -181,7 +183,7 @@
     },
     {
       "props": {
-        "allowProperties": false,
+        "allowProperties": true,
         "allowMarkerInterfaces": true
       },
       "type": "Interface"
@@ -427,6 +429,7 @@
     },
     {
       "props": {
+        "severity": "ERROR",
         "ignoreFormat": "^$",
         "max": 2
       },
@@ -441,13 +444,7 @@
           "TYPEDEF_DEF",
           "INTERFACE_DEF",
           "OBJECT_DECL",
-          "FUNCTION",
-          "FOR",
-          "IF",
-          "WHILE",
-          "SWITCH",
-          "TRY",
-          "CATCH"
+          "FUNCTION"
         ],
         "option": "aloneorsingle"
       },
@@ -542,7 +539,7 @@
     },
     {
       "props": {
-        "severity": "WARNING",
+        "severity": "INFO",
         "moduleTypeMap": {},
         "ignoreModules": []
       },

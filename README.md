@@ -355,11 +355,11 @@ Use \u, not \U, for unicode escape sequences.
 
 ### 2.4.5 Array literals
 
-Use new Array()<T> rather than Array literals.
+Use new Array<T>() rather than Array literals.
 
 Do this:
 ```haxe
-new Array()<String>()
+new Array<String>()
 ```
 
 Not this:
